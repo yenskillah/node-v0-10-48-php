@@ -1,10 +1,8 @@
 FROM mmsonny/centos-mysql-php-composer
 
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh && \
-    curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash &&\
-    source ~/.bash_profile && \
-    nvm list-remote && \
-    nvm install v0.10.48 && \
-    nvm use v0.10.48 && \
-    nvm alias default v0.10.48 && \
+RUN wget http://nodejs.org/dist/v0.10.48/node-v0.10.48.tar.gz && \
+    tar xzvf node-v* && cd node-v* && \
+    yum install gcc gcc-c++ -y && \
+    ./configure && \
+    make install &&\
     node --version
